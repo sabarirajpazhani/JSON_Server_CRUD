@@ -14,7 +14,6 @@ document
       resultPage.empty();
       const newTag = $("<h1></h1>").text("All Users in JSON DB");
       resultPage.css("display", "none").append(newTag).fadeIn("slow");
-      console.log(newTag);
 
       userData.forEach((user) => {
         const mainDiv = $("<div></div>")
@@ -28,9 +27,10 @@ document
 
         const div2 = $("<div></div>").attr("id", "div2").addClass("btn");
         const buttonDel = $("<button></button>").addClass("del").text("Delete");
-        const buttonUpdate = $("<button></button>").addClass("update").text("Update");
+        const buttonUpdate = $("<button></button>")
+          .addClass("update")
+          .text("Update");
         div2.append(buttonDel).append(buttonUpdate);
-
 
         mainDiv.append(div1).append(div2);
         resultPage.append(mainDiv);
@@ -41,6 +41,40 @@ document
   });
 
 //POST: Add the new User
+$("#form").submit(function (e) {
+  e.preventDefault();
+  try {
+    const name = nameInput.val().trim();
+    const email = emailInput.val().trim();
+
+    if (!name || !email) {
+      alert("Please enter the input properly");
+      return;
+    }
+
+    const userData = { name, email };
+    $.ajax({
+      url: API_LINK,
+      method: "POST",
+      data: JSON.stringify(userData),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (res) {
+        console.log("Succssfully Submited ");
+        $("#userName").val("");
+        $("#userEmail").val("");
+        alert("Successfully submited");
+      },
+      error: function (xhr, status, error) {
+        console.log("Error Status: ", xhr.status);
+        console.log("Error Response : ", xhr.responseText);
+      },
+    });
+  } catch (err) {
+    console.log("Internal Server Error");
+    alert("Internal Server Error");
+  }
+});
 
 // document.getElementById("form").addEventListener("submit", async function (e) {
 //   e.preventDefault();
@@ -70,17 +104,40 @@ document
 // });
 
 //GET: Single user
-document.getElementById("view_user").addEventListener("click", function (e) {
-  const userID = prompt("Enter the User ID: ");
-  console.log(userID);
-  const apiURL = fetch(`${API_LINK}/${userID}`);
-  console.log(apiURL);
-});
+document
+  .getElementById("view_user")
+  .addEventListener("click", async function (e) {
+    try {
+      const userID = prompt("Enter the User ID: ");
+      const apiURL = await fetch(`${API_LINK}/${userID}`);
+      const user = await apiURL.json();
+      if (!user) {
+        alert("Please Enter the Correct User ID");
+        return;
+      }
+      resultPage.empty();
 
-// `<div class="user" data-id="${user.id}">
-//       <div><strong>${user.name}</strong> - ${user.email}</div>
-//       <div class="btn">
-//           <button class="del">Delete</button>
-//           <button class="update">Update</button>
-//       </div>
-//   </div>`
+      const mainDiv = $("<div></div>")
+        .addClass("user")
+        .attr("data-id", user.id);
+
+      const div1 = $("<div></div>").attr("id", "div1");
+      const strong = $("<strong>").text(user.name);
+      const span = $("<span>").text(" - " + user.email);
+      div1.append(strong).append(span);
+
+      const div2 = $("<div></div>").attr("id", "div2").addClass("btn");
+      const buttonDel = $("<button></button>").addClass("del").text("Delete");
+      const buttonUpdate = $("<button></button>")
+        .addClass("update")
+        .text("Update");
+      div2.append(buttonDel).append(buttonUpdate);
+
+      mainDiv.append(div1).append(div2);
+      resultPage.append(mainDiv);
+      
+    } catch (err) {
+      alert("Internal Server Error");
+      return;
+    }
+  });
