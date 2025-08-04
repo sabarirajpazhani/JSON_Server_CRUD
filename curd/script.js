@@ -35,15 +35,35 @@ document
             const id = user.id;
             $.ajax({
               url: `${API_LINK}/${id}`,
-              type: "DELETE", 
-              success:function(){
-                alert("User with ID "+id+" deleted Successfully");
-              }
-            })
+              type: "DELETE",
+              success: function () {
+                alert("User with ID " + id + " deleted Successfully");
+              },
+            });
           });
         const buttonUpdate = $("<button></button>")
           .addClass("update")
-          .text("Update");
+          .text("Update")
+          .on("click", function () {
+            const id = user.id;
+            const name = prompt("Enter the Updated name: ", user.name);
+            const email = prompt("Enter the Updated Email: ", user.email);
+
+            if (!name || !email) {
+              alert("Please Enter the value for Update..");
+              return;
+            }
+            $.ajax({
+              url: `${API_LINK}/${id}`,
+              method: "PUT",
+              data: JSON.stringify({ name, email }),
+              contentType: "application/json",
+              success: function () {
+                console.log("Successfully Updated...!");
+                alert("Successfuly updated")
+              },
+            });
+          });
         div2.append(buttonDel).append(buttonUpdate);
 
         mainDiv.append(div1).append(div2);
