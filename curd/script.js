@@ -60,7 +60,7 @@ document
               contentType: "application/json",
               success: function () {
                 console.log("Successfully Updated...!");
-                alert("Successfuly updated")
+                alert("Successfuly updated");
               },
             });
           });
@@ -174,3 +174,21 @@ document
       return;
     }
   });
+
+document.getElementById("delete").addEventListener("click", async function (e) {
+  try {
+    const userID = prompt("Enter the User ID for delete: ");
+    const userData = await fetch(`${API_LINK}/${userID}`,{
+      method:"DELETE",
+      headers:{
+        "Content-type":"application/json"
+      }
+    });
+    const users = await userData.json();
+    alert("Successfully Deleted");
+    console.log(users.name);
+  } catch (err) {
+    console.log("Internal Server Error");
+    alert("Internal Server Error");
+  }
+});
