@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <form action="" id="form">
+        <label for="userName">User Name</label>
+        <input type="text" id="userName" required>
+
+        <label for="userEmail">User Email</label>
+        <input type="email" id="userEmail" required>
+
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+    <h2 id="msg"></h2>
+    <section class="operation">
+        <button id="view_All">View All Users</button>
+        <button id="view_user">View user</button>
+        <button id="delete">Delete User</button>
+        <button id="update_user">Update user</button>
+    </section>
+
+    <div id="resultPage"></div>
+</body>
+</html>

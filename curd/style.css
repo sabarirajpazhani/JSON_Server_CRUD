@@ -1,0 +1,32 @@
+#form{
+    width: 270px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 7px;
+    margin: 0 auto;
+}
+
+#submitBtn{
+    width: 100px;
+    margin: 0 auto;
+}
+
+.operation{
+    width: 370px;
+    margin: 20px auto;
+    
+}
+
+.user{
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+h1{
+    text-align: center;
+    border-top: 2px solid black;
+}
