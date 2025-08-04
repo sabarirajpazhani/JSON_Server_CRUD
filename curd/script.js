@@ -18,6 +18,7 @@ document
       userData.forEach((user) => {
         const mainDiv = $("<div></div>")
           .addClass("user")
+          .attr("id", "mainID")
           .attr("data-id", user.id);
 
         const div1 = $("<div></div>").attr("id", "div1");
@@ -26,7 +27,20 @@ document
         div1.append(strong).append(span);
 
         const div2 = $("<div></div>").attr("id", "div2").addClass("btn");
-        const buttonDel = $("<button></button>").addClass("del").text("Delete");
+        const buttonDel = $("<button></button>")
+          .addClass("del")
+          .text("Delete")
+          .on("click", function () {
+            console.log(user.id);
+            const id = user.id;
+            $.ajax({
+              url: `${API_LINK}/${id}`,
+              type: "DELETE", 
+              success:function(){
+                alert("User with ID "+id+" deleted Successfully");
+              }
+            })
+          });
         const buttonUpdate = $("<button></button>")
           .addClass("update")
           .text("Update");
@@ -55,7 +69,7 @@ $("#form").submit(function (e) {
     const userData = { name, email };
     $.ajax({
       url: API_LINK,
-      method: "POST",
+      type: "POST",
       data: JSON.stringify(userData),
       contentType: "application/json",
       dataType: "json",
@@ -135,7 +149,6 @@ document
 
       mainDiv.append(div1).append(div2);
       resultPage.append(mainDiv);
-      
     } catch (err) {
       alert("Internal Server Error");
       return;
