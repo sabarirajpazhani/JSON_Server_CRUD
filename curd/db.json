@@ -1,59 +1,24 @@
 {
   "users": [
     {
-      "name": "sabari",
-      "email": "sabariraj@gmail.com",
-      "id": "1"
+      "name": "JS Thamizh",
+      "email": "js@gmail.com",
+      "id": "176d"
     },
     {
-      "name": "sabari",
-      "email": "sabariraj@gmail.com",
-      "id": "1"
+      "id": "95e1",
+      "name": "sharmi",
+      "email": "sharmi@gmail.com"
     },
     {
-      "id": "84c8",
-      "name": "sabari",
-      "email": "sabarirajpazhani@gmail.com"
-    },
-    {
-      "id": "331b",
-      "name": "hari",
-      "email": "hari@gmail.com"
-    },
-    {
-      "id": "019f",
-      "name": "JS",
-      "email": "js@gmail.com"
-    },
-    {
-      "id": "95ef",
+      "id": "37da",
       "name": "subha",
       "email": "subha@gmail.com"
     },
     {
-      "id": "e0d0",
-      "name": "JS",
-      "email": "js@gmail.com"
-    },
-    {
-      "id": "a445",
       "name": "sabari",
-      "email": "empty@gmail.com"
-    },
-    {
-      "id": "9c07",
-      "name": "sabari",
-      "email": "empty@gmail.com"
-    },
-    {
-      "id": "68bc",
-      "name": "sabari",
-      "email": "hari@gmail.com"
-    },
-    {
-      "id": "6a68",
-      "name": "lknokp",
-      "email": "ljpoS@gmail.com"
+      "email": "Sabari@gmail.com",
+      "id": "7a54"
     }
   ]
 }
