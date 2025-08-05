@@ -13,20 +13,60 @@
 }
 
 .operation{
-    width: 370px;
+    width: 500px;
     margin: 20px auto;
-    
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-
+.operation > button{
+    border-radius: 3px;
+    padding: 4px;
+    cursor: pointer;
+}
 .user{
-    border: 1px solid black;
+    border: 3px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    background-color: rgb(204, 204, 204);
+    border-radius: 10px;
 }
 
 h1{
     text-align: center;
     border-top: 2px solid black;
+}
+.btn{
+    display: flex;
+    gap: 10px;
+    margin-right: 7px;
+}
+.btn button:nth-child(1), .btn button:nth-child(2){
+    background-color: rgb(101, 101, 101);
+    color: white;
+    padding: 6px;
+    width: 70px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.btn button:nth-child(1):hover, .btn button:nth-child(2):hover{
+    background-color: rgb(193, 191, 191);
+    color: black;
+}
+
+.searching{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#search{
+    height:40px;
+    width: 400px;
+    padding :0 20px;
 }
